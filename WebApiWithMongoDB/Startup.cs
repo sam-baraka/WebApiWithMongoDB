@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using WebApiWithMongoDB.Models;
+using WebApiWithMongoDB.Services;
 
 namespace WebApiWithMongoDBs
 {
@@ -27,6 +28,7 @@ namespace WebApiWithMongoDBs
 
             services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+            services.AddSingleton<BookService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
